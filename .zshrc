@@ -64,7 +64,7 @@ setopt autocd extendedglob
 
 #aliases I like
 alias ls="ls --color=auto"
-alias ll="ls -l"
+alias ll="ls -als"
 alias lrt="ls -lrt"
 alias v="vim"
 alias l="less"
