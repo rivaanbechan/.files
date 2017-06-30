@@ -1,7 +1,9 @@
-source $VIMRUNTIME/vimrc_example.vim
-colorscheme zellner
+"Disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
 
-"from tobit
 set nu "number lines
 "source $VIMRUNTIME/colors/fu.vim "colour theme not scheme
 "source $VIMRUNTIME/colors/blazer.vim "colour theme not scheme
