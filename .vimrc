@@ -64,10 +64,6 @@ let g:solarized_termcolors=16
 colorscheme solarized
 set background=dark
 
-clipboard
-set clipboard=unnamed
-
-
 "rebind for space: prime real estate wasted by default
 nnoremap <Space> <ESC>
 
