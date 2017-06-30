@@ -52,11 +52,21 @@ nnoremap <C-l> gt
 "nnoremap - <C-W>-
 
 "alternate keys for indenting/unindenting
-inoremap <S-Tab> <C-O><LT><LT>
+"inoremap <S-Tab> <C-O><LT><LT>
 nnoremap <Tab> >>
-nnoremap <S-Tab> <LT><LT>j
+"nnoremap <S-Tab> <LT><LT>j
+inoremap <S-Tab> <C-p>
 vnoremap <Tab> >
 vnoremap <S-Tab> <LT>
+
+"colorscheme
+let g:solarized_termcolors=16
+colorscheme solarized
+set background=dark
+
+clipboard
+set clipboard=unnamed
+
 
 "rebind for space: prime real estate wasted by default
 nnoremap <Space> <ESC>
