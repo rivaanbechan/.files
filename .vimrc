@@ -10,6 +10,10 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 
+"Remap esc
+inoremap kj <esc>
+cnoremap kj <esc>
+
 set nu "number lines
 "source $VIMRUNTIME/colors/fu.vim "colour theme not scheme
 "source $VIMRUNTIME/colors/blazer.vim "colour theme not scheme
