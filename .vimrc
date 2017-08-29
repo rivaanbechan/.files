@@ -17,7 +17,7 @@ cnoremap kj <esc>
 set nu "number lines
 "source $VIMRUNTIME/colors/fu.vim "colour theme not scheme
 "source $VIMRUNTIME/colors/blazer.vim "colour theme not scheme
-set mouse=a "mouse functionality (like gvim!)
+"set mouse=a "mouse functionality (like gvim!)
 set tw=10000 "no wrapping text onto the next line
 set listchars+=precedes:<,extends:> "when nowrap is set-has carroots when a line extends beyond the edge
 syntax on "colours!
@@ -72,9 +72,9 @@ vnoremap <Tab> >
 vnoremap <S-Tab> <LT>
 
 "colorscheme
-let g:solarized_termcolors=16
-colorscheme solarized
-set background=dark
+"let g:solarized_termcolors=16
+"colorscheme solarized
+"set background=dark
 
 "rebind for space: prime real estate wasted by default
 nnoremap <Space> <ESC>
@@ -98,3 +98,5 @@ nnoremap <C-c><C-v> :SlimuxREPLConfigure<CR>
 "paste formatted time
 nnoremap t "=strftime("%Y-%m-%d %H:%M:%S")<CR>P
 
+"Hackernews
+nnoremap <F3> :HackerNews<CR> 
