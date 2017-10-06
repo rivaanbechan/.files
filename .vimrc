@@ -100,3 +100,6 @@ nnoremap t "=strftime("%Y-%m-%d %H:%M:%S")<CR>P
 
 "Hackernews
 nnoremap <F3> :HackerNews<CR> 
+
+"Disable numbers for copy
+nnoremap <F12> :set rnu! nu!<CR> 
