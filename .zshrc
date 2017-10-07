@@ -1,3 +1,9 @@
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+POWERLEVEL9K_MODE='awesome-patched'
+ZSH_THEME="powerlevel9k/powerlevel9k"
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh/
 
@@ -6,7 +12,6 @@ ZSH=$HOME/.oh-my-zsh/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="agnoster"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -16,7 +21,7 @@ ZSH_THEME="agnoster"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable bi-weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
+#DISABLE_AUTO_UPDATE="true"
 
 # Uncomment to change how often before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
@@ -41,7 +46,7 @@ DISABLE_AUTO_UPDATE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(gitfast git-extras archlinux encode64 pip ruby tmux vi-mode web-search)
+plugins=(gitfast git-extras encode64 pip tmux vi-mode web-search)
 
 if [ -f $ZSH/oh-my-zsh.sh ]; then
     source $ZSH/oh-my-zsh.sh
@@ -53,14 +58,7 @@ HISTFILE=~/.histfile
 HISTSIZE=5000
 SAVEHIST=5000
 setopt autocd extendedglob
-#bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
-#zstyle :compinstall filename '/home/vanboxel/.zshrc'
 
-#autoload -Uz compinit
-#compinit
-# End of lines added by compinstall
 
 #aliases I like
 alias ls="ls --color=auto"
@@ -68,14 +66,6 @@ alias ll="ls -als"
 alias lrt="ls -lrt"
 alias v="vim"
 alias l="less"
-alias pacman="sudo pacman"
-alias sudo='sudo '
-
-# gurps
-alias gurps="$HOME/Downloads/gcs-4.0.1-linux/gcs"
-
-# gitcrypt
-alias gitcrypt="$HOME/proj/git-encrypt/gitcrypt"
 
 #set up nice left and right prompt
 #export PROMPT=">"
@@ -95,40 +85,36 @@ bindkey '[4~' end-of-line
 #set the editor
 export EDITOR='vim'
 
-#bind capslock to escape
+#Aliases
+alias rcs='clear; ssh rcs'
+alias gitlab='clear; ssh gitlab'
+alias anc='clear; ssh anc'
+alias rcsgateway='clear; ssh -A 192.168.68.2'
+alias outsearch='clear; ssh outsearch'
+alias outindex='clear; ssh outindex'
+alias outnet='clear; ssh outnet'
+alias idz='clear; ssh idz -p 2222'
+alias vps='clear; ssh vps'
+alias ls='ls -G'
+alias ll='ls -als'
+alias pass='clear; ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no'
+alias dc='clear && printf "\n" && date && printf "\n" && cal | grep --color -EC6 "\b$(date +%e | sed "s/ //g")"'
+alias svlc='/Applications/VLC.app/Contents/MacOS/VLC -I rc'
+alias gsoc='cd /Users/rivaan/gsoc'
+alias tmp='cd /Users/rivaan/gsoc/tmp'
+alias sps='cd /Applications/Splunk'
+alias song='cd /Users/rivaan/Music/songwriting/'
+alias gl='cd /Users/rivaan/gsoc/git/gitlab/'
+alias gh='cd /Users/rivaan/gsoc/git/github/'
+alias tmux="TERM=screen-256color-bce tmux"
 
-if [[ -z $DISPLAY ]]
-then
-else
-    xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
-fi
-#add to PATH
-export PATH=$PATH:$HOME/local/bin
-export PATH=$PATH:$HOME/.gem/ruby/2.2.0/bin
+POWERLEVEL9K_MODE='awesome-patched'
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
 
-# add to LD_LIBRARY_PATH because #STEAM BULLSHIT
-# maybe doesn't help
-# steam seems to work, hopefully don't need this slowness
-# still throws bullshit errors
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib32:/usr/lib
-
-# stream to twitch
-streaming() {
-    INRES="1920x1080" # input resolution
-    OUTRES="1920x1080" # output resolution
-    FPS="15" # target FPS
-    GOP="30" # i-frame interval, should be double of FPS, 
-    GOPMIN="15" # min i-frame interval, should be equal to fps, 
-    THREADS="2" # max 6
-    CBR="1000k" # constant bitrate (should be between 1000k - 3000k)
-    QUALITY="ultrafast"  # one of the many FFMPEG preset
-    AUDIO_RATE="44100"
-    STREAM_KEY=`cat /home/vanboxel/.twitch_key`
-    SERVER="live-jfk" # twitch server in nyc, see http://bashtech.net/twitch/ingest.php for list
-    AUDIO_SRC="pulse" # because pulse doesn't work for this?
-
-    ffmpeg -f x11grab -s "$INRES" -r "$FPS" -i :0.0 -f alsa -i $AUDIO_SRC -f flv -ac 2 -ar $AUDIO_RATE \
-      -vcodec libx264 -g $GOP -keyint_min $GOPMIN -b:v $CBR -minrate $CBR -maxrate $CBR -pix_fmt yuv420p\
-      -s $OUTRES -preset $QUALITY -tune film -acodec libmp3lame -threads $THREADS -strict normal \
-      -bufsize $CBR "rtmp://$SERVER.twitch.tv/app/$STREAM_KEY"
-}
+POWERLEVEL9K_OS_ICON_BACKGROUND="white"
+POWERLEVEL9K_OS_ICON_FOREGROUND="blue"
+POWERLEVEL9K_DIR_HOME_FOREGROUND="white"
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND="white"
+POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
